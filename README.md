@@ -17,21 +17,6 @@ Uma tela de login **moderna, responsiva e interativa** com **efeito de ondas ani
 
 ---
 
-## 📂 Estrutura do Projeto
-
-project/
-│
-├── index.html # HTML principal com formulários e estrutura
-├── style.css # Estilos CSS separados e customizados
-├── script.js # Scripts JavaScript com interações e animações
-├── assets/ # Imagens, ícones e GIFs do projeto
-│ └── login-animation.gif
-└── README.md # Este arquivo
-
-
-
----
-
 ## ⚙️ Tecnologias Utilizadas
 
 - HTML5
@@ -75,4 +60,5 @@ project/
 - Experiência consistente e interativa em todas as resoluções.
 
 ---
+
 
