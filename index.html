@@ -1,40 +1,103 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR" class="scroll-smooth" data-theme="light">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>LOGIN</title>
-  <link rel="stylesheet" href="style.css">
-  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Tela de Login Moderna e Interativa</title>
+
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+
+  <!-- CSS externo -->
+  <link rel="stylesheet" href="style.css" />
 </head>
-<body>
-  <main class="container">
-    <form>
-      <h1>Login Mpx.Dev</h1>
+<body data-theme="light" class="relative min-h-screen flex items-center justify-center px-4 overflow-hidden">
+  <!-- Fundo animado -->
+  <section aria-label="Fundo animado com efeito de ondas ovais giratórias" aria-hidden="true">
+    <div class="wave" aria-hidden="true">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </section>
 
-      <div class="input-box">
-        <input type="email" placeholder="Usuário" required>
-        <i class="bx bxs-user"></i>
+  <!-- Container principal -->
+  <main role="main" aria-label="Formulário de login, criação de conta e recuperação de senha" class="glass animate-fade-slide relative z-10">
+    <h1 class="text-black text-4xl font-semibold mb-10 text-center tracking-tight opacity-0 fade-in-up" tabindex="0" id="welcome-text">
+      Bem-vindo!
+    </h1>
+
+    <!-- Formulário de Login -->
+    <form class="space-y-10" novalidate id="login-form" autocomplete="off" aria-describedby="form-desc" aria-live="polite" aria-atomic="true">
+      <p id="form-desc" class="sr-only">Formulário para entrar na sua conta</p>
+      <div class="relative">
+        <input id="email" name="email" type="email" autocomplete="email" required placeholder="E-mail" aria-describedby="email-desc" aria-required="true" class="input-with-icon" />
+        <span class="input-icon" aria-hidden="true"><i class="fas fa-envelope"></i></span>
+        <p id="email-desc" class="sr-only">Campo para inserir seu endereço de e-mail</p>
       </div>
-
-      <div class="input-box">
-        <input type="password" placeholder="Senha" required>
-        <i class="bx bxs-lock-alt"></i>
+      <div class="relative">
+        <input id="password" name="password" type="password" autocomplete="current-password" required placeholder="Senha" aria-describedby="password-desc" aria-required="true" class="input-with-icon" />
+        <span class="input-icon" aria-hidden="true"><i class="fas fa-lock"></i></span>
+        <p id="password-desc" class="sr-only">Campo para inserir sua senha</p>
       </div>
-
-      <div class="remember-forgot">
-        <label>
-          <input type="checkbox"> Lembrar Senha
-        </label>
-        <a href="#">Esqueci a Senha</a>
+      <div class="flex justify-between items-center text-sm select-none">
+        <button type="button" id="toggle-recover-password" class="link-subtle">Recuperar senha</button>
+        <button type="button" id="toggle-create-account" class="link-subtle">Criar conta</button>
       </div>
+      <button type="submit" class="btn-gradient relative overflow-hidden" aria-label="Entrar na conta" id="login-button">
+        <span class="btn-text select-none">Entrar</span>
+        <span class="loader" aria-hidden="true"></span>
+      </button>
+    </form>
 
-      <button type="submit" class="login">Login</button>
-
-      <div class="register-link">
-        <p>Não tem uma conta? <a href="#">Cadastre-se</a></p>
+    <!-- Formulário Criar Conta -->
+    <form class="space-y-10 mt-10 hidden" novalidate id="create-account-form" autocomplete="off" aria-describedby="create-account-desc" aria-live="polite" aria-atomic="true">
+      <p id="create-account-desc" class="sr-only">Formulário para criar uma nova conta</p>
+      <div class="relative">
+        <input id="create-name" name="name" type="text" required placeholder="Nome completo" aria-required="true" class="input-with-icon" />
+        <span class="input-icon" aria-hidden="true"><i class="fas fa-user"></i></span>
       </div>
+      <div class="relative">
+        <input id="create-email" name="email" type="email" required placeholder="E-mail" aria-required="true" class="input-with-icon" />
+        <span class="input-icon" aria-hidden="true"><i class="fas fa-envelope"></i></span>
+      </div>
+      <div class="relative">
+        <input id="create-password" name="password" type="password" required placeholder="Senha" aria-required="true" class="input-with-icon" />
+        <span class="input-icon" aria-hidden="true"><i class="fas fa-lock"></i></span>
+      </div>
+      <div class="flex justify-between items-center text-sm select-none">
+        <button type="button" id="toggle-login-from-create" class="link-subtle">Voltar para login</button>
+      </div>
+      <button type="submit" class="btn-gradient relative overflow-hidden" aria-label="Criar conta" id="create-account-button">
+        <span class="btn-text select-none">Criar Conta</span>
+        <span class="loader" aria-hidden="true"></span>
+      </button>
+    </form>
+
+    <!-- Formulário Recuperar Senha -->
+    <form class="space-y-10 mt-10 hidden" novalidate id="recover-password-form" autocomplete="off" aria-describedby="recover-password-desc" aria-live="polite" aria-atomic="true">
+      <p id="recover-password-desc" class="sr-only">Formulário para recuperar a senha da conta</p>
+      <div class="relative">
+        <input id="recover-email" name="recover-email" type="email" required placeholder="Digite seu e-mail para recuperar a senha" aria-required="true" class="input-with-icon" />
+        <span class="input-icon" aria-hidden="true"><i class="fas fa-envelope-open-text"></i></span>
+      </div>
+      <div class="flex justify-between items-center text-sm select-none">
+        <button type="button" id="toggle-login-from-recover" class="link-subtle">Voltar para login</button>
+      </div>
+      <button type="submit" class="btn-gradient relative overflow-hidden" aria-label="Enviar solicitação de recuperação de senha" id="recover-password-button">
+        <span class="btn-text select-none">Enviar</span>
+        <span class="loader" aria-hidden="true"></span>
+      </button>
     </form>
   </main>
+
+  <!-- JS externo -->
+  <script src="script.js"></script>
 </body>
 </html>
